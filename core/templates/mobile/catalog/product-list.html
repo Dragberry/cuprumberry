@@ -1,0 +1,34 @@
+<div class="row" id="productList">
+    <div class="col-12">
+        {% include "./catalog-top-menu.html" %}
+    </div>
+    <div class="col-12">
+        {% if products %}
+            <div class="row">
+                {% for product in products %}
+                    {% include "./product-tile-item.html" with product=product %}
+                {% endfor %}
+            </div>
+        {% else %}
+             <div class="row bg-light rounded p-2">
+                <div class="col-12 text-center">
+                    <p class="mt-4 fw-bold">{% translate 'Catalog: no products in category' %}</p>
+                    <p class="mt-4">
+                        <a class="btn btn-success" href="{% url 'core:catalog' %}">{% translate 'Cart go to catalog' %}</a>
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12">
+        {% include "common/catalog/catalog-paginator.html" with page_obj=page_obj %}
+    </div>
+    {% if category.description %}
+    <div class="col-12 bg-light rounded p-3">
+        {{ category.description|safe}}
+    </div>
+    {% endif %}
+</div>

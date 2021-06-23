@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load i18n %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'bootstrap/5.0/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/5.0/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/5.0/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-playfair-display.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/socials.css' %}">
+    <title>{% block title %} Title {% endblock %}</title>
+    <meta name="description" content="{% block meta_description %} meta description {% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %} meta keywords {% endblock %}">
+</head>
+<body>
+
+{% include "mobile/layout/header.html" %}
+
+<main class="container">
+{% block content %} Content {% endblock %}
+</main>
+
+{% include "common/layout/footer.html" %}
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/5.0/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/catalog.js' %}"></script>
+</body>
+</html>

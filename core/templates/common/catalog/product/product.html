@@ -1,0 +1,49 @@
+{% extends "common/template.html" %}
+{% load i18n %}
+{% load fullurl %}
+
+{% block title %}{% if product.page_title %}{{ product.page_title }}{% else %}{{ product.name }} | {{ request.app_name }}{% endif %}{% endblock %}
+
+{% block meta_description  %}{{ product.page_description }}{% endblock %}
+
+{% block meta_keywords %}{{ product.page_keywords }}{% endblock %}
+
+{% block canonical %}
+    {% if request.path != product.url %}
+        <link rel="canonical" href="{% buildfullurl product.url %}" />
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12 bg-light rounded p-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                {% for b_name, b_url in breadcrumb.items %}
+                <li class="breadcrumb-item">
+                    <a href="{{ b_url }}">{{ b_name }}</a>
+                </li>
+                {% endfor %}
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ product.name }}
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12">
+        {% if request.user_agent.is_mobile %}
+            {% include "mobile/catalog/product/product-content.html" %}
+        {% else %}
+            {% include "normal/catalog/product/product-content.html" %}
+        {% endif %}
+    </div>
+</div>
+
+{% include "../quick-order.html" %}
+{% include "../add-to-cart.html" %}
+
+{% endblock %}

@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-23 01:19+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Common
+msgid "home"
+msgstr "Главная"
+
+msgid "details"
+msgstr "Подробнее"
+
+# Menu
+msgid "catalog"
+msgstr "Каталог"
+
+msgid "materials"
+msgstr "Материалы"
+
+msgid "information"
+msgstr "Информация"
+
+msgid "cart"
+msgstr "Корзина"
+
+msgid "about us"
+msgstr "О нас"
+
+# Filters
+msgid "sort by"
+msgstr "Сортировать"
+
+msgid "DATE_DESC"
+msgstr "Сначала новые"
+
+msgid "DATE_ASC"
+msgstr "Сначала старые"
+
+msgid "PRICE_DESC"
+msgstr "По убыванию цены"
+
+msgid "PRICE_ASC"
+msgstr "По возрастанию цены"
+
+msgid "Display list mode"
+msgstr "Отображение списком"
+
+msgid "Display tiles mode"
+msgstr "Отображание таблицей"
+
+# Pagination
+msgid "Page size"
+msgstr "Размер страницы"
+
+msgid "First page"
+msgstr "Первая страница"
+
+msgid "Previous page"
+msgstr "Предыдущая страница"
+
+msgid "Next page"
+msgstr "Следующая страница"
+
+msgid "Last page"
+msgstr "Последняя страница"
+
+# Catalog
+msgid "Catalog: no products in category"
+msgstr "Увы, на данный момент в данной категории ничего нет:( Но Вы всегда можете заглянуть в общий каталог!"
+
+# Quick order and cart
+msgid "Cart title"
+msgstr "Корзина"
+
+msgid "Cart order info"
+msgstr "Оформление заказа"
+
+msgid "Cart order success"
+msgstr "Заказ принят"
+
+msgid "Cart order success text"
+msgstr "Спасибо за заказ! В ближайшее время мы с Вами свяжемся для подтверждения."
+
+msgid "Cart details"
+msgstr "Детали заказа"
+
+msgid "Quick order title"
+msgstr "Заказать изделие"
+
+msgid "YourName"
+msgstr "Ваше имя"
+
+msgid "Mobile"
+msgstr "Телефон"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Address"
+msgstr "Адрес"
+
+msgid "Comment"
+msgstr "Комментарий"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Confirm"
+msgstr "Подтвердить"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Cart product title"
+msgstr "Название"
+
+msgid "Cart product price"
+msgstr "Цена"
+
+msgid "Cart empty"
+msgstr "Корзина пуста"
+
+msgid "Edit order"
+msgstr "Редактировать заказ"
+
+msgid "Submit order"
+msgstr "Подтвердить заказ"
+
+msgid "Cart go to catalog"
+msgstr "Перейти в каталог"
+
+msgid "Cart go to info"
+msgstr "Перейти к оформлению"
+
+msgid "Quick order thanks"
+msgstr "Спасибо за заказ!"
+
+msgid "Quick order feedback"
+msgstr "Мы свяжемся с Вами в самое ближайшее время."
+
+msgid "Quick order error: no productId"
+msgstr "Не указан продукт для заказа"
+
+msgid "Quick order error: either mobile or email must be provided"
+msgstr "Необходимо указать телефон и/или e-mail"
+
+msgid "Quick order error: no address"
+msgstr "Необходимо указать адрес"
+
+msgid "Quick order error: no product"
+msgstr "Ой, кажется прооизошла ошибка. У нас нет такого продукта."
+
+# Cart
+msgid "Cart: Product has been added to cart"
+msgstr "Товар добавлен в корзину"
+
+msgid "Cart: Product code"
+msgstr "Код продукта"
+
+msgid "Cart: Error"
+msgstr "Ошибка"
+
+msgid "Cart error: Item is already in cart"
+msgstr "Товар уже в корзине"
+
+msgid "Cart error: Product not found"
+msgstr "Товар не найден"
+
+msgid "Cart error: no product in the cart"
+msgstr "Кажется, Вы удалили все товары из корзины7"
+
+msgid "Cart error: either mobile or email must be provided"
+msgstr "Необходимо указать телефон и/или e-mail"
+
+msgid "Cart error: no address"
+msgstr "Необходимо указать адрес"
+
+msgid "Error: Bad request"
+msgstr "Ошибка запроса"
+
+msgid "Error: Internal server error"
+msgstr "Внутренняя ошибка сервера"

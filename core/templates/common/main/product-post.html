@@ -1,0 +1,57 @@
+{% load i18n %}
+{% load core_tags %}
+<article class="bg-light rounded p-4 mb-3">
+    <h3 class="blog-post-title small h2">{{ post.title }}</h3>
+    <div class="row">
+        <div class="col-6">
+            <p class="blog-post-meta">
+                {{ post.created_datetime|format_date }}
+            </p>
+            <blockquote>
+                <h4>Теги: {% for category in post.product.categories.all %}<em>{{ category.name }}</em>{% if not forloop.last %}, {% endif %} {% endfor %}</h4>
+            </blockquote>
+            <div class="row align-items-start">
+                <div class="col">
+                    <p>{{ post.content }}</p>
+                    <a href="{{ post.product.url }}" title="{{ post.product.name }}">
+                        {% translate 'details' %}...
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div id="productImagesCarousel{{ product.id }}" class="carousel slide" data-bs-ride="carousel">
+                {% with product_images=post.product.images.all %}
+                <div class="carousel-indicators">
+                    {% for product_image in product_images %}
+                    <button type="button"
+                            data-bs-target="#productImagesCarousel{{ product.id }}"
+                            data-bs-slide-to="{{ forloop.counter0 }}"
+                            class="{% if forloop.counter0 == 0 %} active {% endif %}"
+                            aria-current="true"
+                            aria-label="Slide {{ forloop.counter }}">
+                    </button>
+                    {% endfor %}
+                </div>
+                <div class="carousel-inner">
+                    {% for product_image in product_images %}
+                    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+                        <img src="{{ product_image.image.url }}" class="d-block w-100" alt="...">
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button"
+                        data-bs-target="#productImagesCarousel{{ product.id }}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button"
+                        data-bs-target="#productImagesCarousel{{ product.id }}" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,50 @@
+{% extends "common/template.html" %}
+{% load i18n %}
+
+{% block title %} Дизайнерская бижутерия ручной работы | | {{ request.app_name }} {% endblock %}
+
+{% block content %}
+<div class="p-4 p-md-5 mb-1 text-white rounded main-image">
+    <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic main-header">
+            <strong>Дизайнерская бижутерия ручной работы</strong>
+        </h1>
+        <p class="lead my-3 d-none d-md-block">
+            <strong>
+            Здесь вы можете найти оригнальные украшения, созданные методом гальванопластики при помощи магии
+            электричества и химии.
+            Вы можете купить или заказать любое изделие, представленное на сайте.
+            </strong>
+        </p>
+    </div>
+</div>
+
+<div class="row mb-2">
+    {% for quick_reference in quick_references %}
+        {% include "common/main/quick-reference.html" with quick_reference=quick_reference %}
+    {% endfor %}
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <p class="h1 pb-4 mb-2 fst-italic border-bottom">
+            Последние новости:
+        </p>
+    </div>
+    <div class="col-md-8">
+        {% include "common/main/load-more-posts.html" with posts=posts %}
+    </div>
+
+    <div class="col-md-4">
+        <div class="p-4 mb-3 bg-light rounded">
+            <h4 class="fst-italic">О нас:</h4>
+            <p class="mb-0">
+                Добро пожаловать в ремесленную мастерскую CuprumBerry!</p>
+            <p>
+                Все изделия, представленные на сайте, уникальны, так как спроектированы при участии самой природы.
+            </p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+<div class="col-12">
+    <div class="row bg-light rounded pt-4 pb-4 ps-2 pe-2 mb-3">
+        <div class="col-12 col-sm-9 col-md-10">
+            <h2 class="font-weight-bold">
+                <a class="link-dark" href="{{ request.path }}/{{ product.url_name }}">
+                    <span>{{ product.name }}</span>
+                </a>
+            </h2>
+            <div class="row">
+                <div class="col-12 col-sm-4 col-md-3">
+                    <a href="{{ request.path }}/{{ product.url_name }}">
+                        <img class="img-thumbnail product-img-thumbnail"
+                             title="{{ product.name }}"
+                             alt="{{ product.name }}"
+                             src="{{ product.main_image.preview.url }}">
+                    </a>
+                </div>
+                <div class="col-12 col-sm-8 col-md-9">
+                    <div class="row">
+                        <div class="col-6 text-left">
+                            <div>
+                                <span class="fw-bold small mr-4">Код продукта: {{ product.id }}</span>
+                            </div>
+                        </div>
+                        <div class="col-12 text-right">
+                            <hr/>
+                        </div>
+                        <div class="col-12 small text-justify">
+                            <h3 class="p normal small">{{ product.short_description}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-3 col-md-2 text-center text-danger align-items-end">
+            {% if product.actual_price %}
+            <div>
+                <strong>{{ product.actual_price }} BYN</strong>
+            </div>
+            <div>
+                <del class="small">{{ product.price }} BYN</del>
+            </div>
+            {% else %}
+            <div>
+                <strong>{{ product.price }} BYN</strong>
+            </div>
+            {% endif %}
+            <div class="d-grid gap-2">
+                <button id="addToCartButton"
+                    type="button"
+                    onclick="addToCart({{ product.id }});"
+                    class="btn btn-success btn-sm mt-2">
+                <span class="small">В корзину</span>
+                </button>
+                <button id="quickOrderButton"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#quickOrderModal"
+                        onclick="prepareQuickOrder({{ product.id }}, '{{ product.name }}', '{{ product.main_image.preview.url }}')"
+                        class="btn btn-primary btn-sm mt-2">
+                    <span class="small">Быстрый заказ</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

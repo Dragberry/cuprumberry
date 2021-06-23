@@ -1,0 +1,11 @@
+{% load i18n %}
+<div id="cartContent" class="row">
+    <div class="col-12">
+        <div class="col-12 text-center">
+            <p>{% translate 'Cart order success text' %}</p>
+            <p class="mt-4">
+                <a class="btn btn-success" href="{% url 'core:catalog' %}">{% translate 'Cart go to catalog' %}</a>
+            </p>
+        </div>
+    </div>
+</div>

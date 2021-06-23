@@ -1,0 +1,72 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-12 bg-light rounded ps-3 pe-3 pt-2 pb-2 mb-4">
+        <form id="filtersForm" action="{{ request.path }}" method="GET"></form>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h1>
+                    {% block h1 %}
+                        {% if current_category.page_h1 %}
+                            {{ current_category.page_h1 }}
+                        {% else %}
+                            {{ current_category.name }}
+                        {% endif %}
+                    {% endblock %}
+                </h1>
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <div class="input-group d-flex justify-content-end">
+                    <div class="form-check-inline list-display-type" title="{% translate 'Display tiles mode' %}">
+                        <label class="btn {% if catalog_filters.display == 'tiles' %} btn-primary {% endif %}"
+                               for="displayTiles">
+                            <input form="filtersForm"
+                                   id="displayTiles"
+                                   type="radio"
+                                   name="display"
+                                   value="tiles"
+                                   class="form-check-input"
+                                   onchange="doFilter(0)"
+                                   {% if catalog_filters.display == 'tiles' %}checked{% endif %}>
+                            <span class="fa fa-table"></span>
+                        </label>
+                    </div>
+                    <div class="form-check-inline list-display-type" title="{% translate 'Display list mode' %}">
+                        <label class="btn {% if catalog_filters.display == 'list' %} btn-primary {% endif %}"
+                               for="displayList">
+                            <input form="filtersForm"
+                                   id="displayList"
+                                   type="radio"
+                                   name="display"
+                                   value="list"
+                                   class="form-check-input"
+                                   onchange="doFilter(0)"
+                                   {% if catalog_filters.display == 'list' %}checked{% endif %}>
+                            <span class="fa fa-list"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <div class="form-row d-flex pb-2 justify-content-end">
+                    <div class="input-group" title="{% translate 'sort by' %}">
+                        <span class="input-group-text bg-primary text-white" id="sortingLabel">
+                            <span class="fa fa-sort"></span>
+                        </span>
+                        <select form="filtersForm"
+                                id="sorting"
+                                name="sort"
+                                class="form-control form-select form-select-sm bg-light"
+                                aria-describedby="sortingLabel"
+                                onchange="doFilter()">
+                            {% for sort_name, sort_value in sorts.items %}
+                            <option value="{{ sort_name }}" {% if catalog_filters.sort == sort_name %}selected{% endif %}>
+                                {% translate sort_name %}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

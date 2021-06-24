@@ -92,7 +92,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'root',
         'OPTIONS': {
-            'read_default_file': '/etc/mysql/my.cnf',
+            'charset': 'utf8mb4'
         },
     }
 }

@@ -3,6 +3,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/cuprumbe/public_html/
     - export SOURCEPATH=/home/cuprumbe/cuprumberry/
+    - /bin/source /home/cuprumbe/virtualenv/cuprumberry/3.8/bin/activate
     - /bin/cd $SOURCEPATH
     - pip install -r requirements.txt
 #    - python manage.py migrate

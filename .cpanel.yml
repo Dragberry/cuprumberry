@@ -6,9 +6,9 @@ deployment:
     - export SOURCEPATH=/home/cuprumbe/cuprumberry/
     - /bin/cd $SOURCEPATH
     - $PYTHONPATH/pip install -r $SOURCEPATH/requirements.txt
-    - $PYTHONPATH/python manage.py migrate
-    - /bin/rm -Rf $DEPLOYPATH/static
-    - $PYTHONPATH/python manage.py collectstatic
-    - /bin/mv -v $SOURCEPATH/static_files/ $DEPLOYPATH/static
+#    - $PYTHONPATH/python manage.py migrate
+#    - /bin/rm -Rf $DEPLOYPATH/static
+#    - $PYTHONPATH/python manage.py collectstatic
+#    - /bin/mv -v $SOURCEPATH/static_files/ $DEPLOYPATH/static
     - /bin/cp -ar $SOURCEPATH/media/ $DEPLOYPATH/media
-    - /bin/selectorctl --interpreter ruby --user cuprumbe --domain cuprumberry.by --restart-webapp cuprumberry
+#    - /bin/selectorctl --interpreter ruby --user cuprumbe --domain cuprumberry.by --restart-webapp cuprumberry

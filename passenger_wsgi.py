@@ -33,3 +33,4 @@ class PassengerPathInfoFix(object):
 # Set the application
 application = get_wsgi_application()
 application = PassengerPathInfoFix(application)
+

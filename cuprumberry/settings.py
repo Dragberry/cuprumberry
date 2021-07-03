@@ -86,13 +86,9 @@ WSGI_APPLICATION = 'cuprumberry.wsgi.application'
 
 DATABASES = {
     'default': {
-        'HOST': '127.0.0.1',
-        'PORT': 3306,
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'root',
-        'PASSWORD': 'root',
         'OPTIONS': {
-            'charset': 'utf8mb4'
+            'read_default_file': '~/etc/mysql/my.cnf',
         },
     }
 }

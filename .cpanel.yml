@@ -12,8 +12,8 @@ deployment:
 #   - INSTALLATION
     - $PYTHONPATH/pip install -r $SOURCEPATH/requirements.txt
     - $PYTHONPATH/python $SOURCEPATH/manage.py migrate
-    - /bin/rm -Rf $DEPLOYPATH/static
+#    - /bin/rm -Rf $DEPLOYPATH/static
     - $PYTHONPATH/python $SOURCEPATH/manage.py collectstatic
-    - /bin/mv -v $SOURCEPATH/static_files/ $DEPLOYPATH/static
+#    - /bin/mv -v $SOURCEPATH/static_files/ $DEPLOYPATH/static
 #    - /bin/cp -ar $SOURCEPATH/media/ $DEPLOYPATH
     - /bin/selectorctl --interpreter ruby --user cuprumbe --domain cuprumberry.by --restart-webapp cuprumberry

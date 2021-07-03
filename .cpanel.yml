@@ -3,4 +3,11 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/cuprumbe/public_html/
     - export SOURCEPATH=/home/cuprumbe/cuprumberry/
+    - /bin/cd $SOURCEPATH
+    - pip install -r requirements.txt
+#    - python manage.py migrate
+#    - /bin/rm -Rf $DEPLOYPATH/static
+#    - python manage.py collectstatic
+#    - /bin/mv -v $SOURCEPATH/static_files/ $DEPLOYPATH/static
     - /bin/cp -ar $SOURCEPATH/media/ $DEPLOYPATH/media
+#    - /bin/selectorctl --interpreter ruby --user cuprumbe --domain cuprumberry.by --restart-webapp cuprumberry

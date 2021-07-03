@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '18zl%jrf6sxe@%es@^d#-cdrzu_9@0vgon1f1ynpkfq77g%w8w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'cuprumberry.by',

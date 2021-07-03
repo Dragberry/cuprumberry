@@ -1,7 +1,4 @@
 ---
 deployment:
   tasks:
-    - /bin/source /home/cuprumbe/virtualenv/cuprumberry/3.8/bin/activate
-    - /bin/cd /home/cuprumbe/cuprumberry
-    - pip install -r requirements.txt
-    - python manage.py migrate
+    - export DEPLOYPATH=/home/user/public_html/

@@ -2,12 +2,3 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/cuprumbe/public_html/
-    - /bin/source /home/cuprumbe/virtualenv/cuprumberry/3.8/bin/activate
-    - /bin/cd /home/cuprumbe/cuprumberry
-    - pip install -r requirements.txt
-    - python manage.py migrate
-    - python manage.py collectstatic
-    - /bin/rm -Rf $DEPLOYPATH/static
-    - /bin/cp -avr static_files/ $DEPLOYPATH/static
-    - /bin/cp -ar media/ $DEPLOYPATH/media
-    - /bin/selectorctl --interpreter ruby --user cuprumbe --domain cuprumberry.by --restart-webapp cuprumberry

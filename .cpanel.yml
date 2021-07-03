@@ -5,7 +5,7 @@ deployment:
     - export DEPLOYPATH=/home/cuprumbe/public_html/
     - export SOURCEPATH=/home/cuprumbe/cuprumberry/
     - export BACKUPPATH=/home/cuprumbe/cuprumberry.backup
-    - export TIMESTAMP=$(date "_+%Y.%m.%d-%H.%M.%S")
+    - export TIMESTAMP=$(/bin/date "_+%Y.%m.%d-%H.%M.%S")
 #   - BACKUP
     - $PYTHONPATH/python $SOURCEPATH/manage.py dumpdata core > $BACKUPPATH/core$TIMESTAMP.json
     - /bin/cp -avr $DEPLOYPATH/media/ $BACKUPPATH/media$TIMESTAMP

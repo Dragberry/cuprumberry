@@ -10,4 +10,4 @@ deployment:
     - $PYTHONPATH/python $SOURCEPATH/manage.py collectstatic
     - /bin/mv -v $SOURCEPATH/static_files/ $DEPLOYPATH/static
     - /bin/cp -ar $SOURCEPATH/media/ $DEPLOYPATH/media
-#    - /bin/selectorctl --interpreter ruby --user cuprumbe --domain cuprumberry.by --restart-webapp cuprumberry
+    - /bin/selectorctl --interpreter ruby --user cuprumbe --domain cuprumberry.by --restart-webapp cuprumberry

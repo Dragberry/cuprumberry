@@ -5,7 +5,7 @@ deployment:
     - export DEPLOYPATH=/home/cuprumbe/public_html/
     - export SOURCEPATH=/home/cuprumbe/cuprumberry/
     - $PYTHONPATH/pip install -r $SOURCEPATH/requirements.txt
-#    - $PYTHONPATH/python manage.py migrate
+    - $PYTHONPATH/python manage.py migrate
 #    - /bin/rm -Rf $DEPLOYPATH/static
 #    - $PYTHONPATH/python manage.py collectstatic
 #    - /bin/mv -v $SOURCEPATH/static_files/ $DEPLOYPATH/static

@@ -4,10 +4,16 @@ deployment:
     - export PYTHONPATH=/home/cuprumbe/virtualenv/cuprumberry/3.8/bin
     - export DEPLOYPATH=/home/cuprumbe/public_html/
     - export SOURCEPATH=/home/cuprumbe/cuprumberry/
+    - export BACKUPPATH=/home/cuprumbe/cuprumberry.backup
+    - export TIMESTAMP=$(date "_+%Y.%m.%d-%H.%M.%S")
+#   - BACKUP
+    - $PYTHONPATH/python $SOURCEPATH/manage.py dumpdata core > $BACKUPPATH/core$TIMESTAMP.json
+    - /bin/cp -avr $DEPLOYPATH/media/ $BACKUPPATH/media$TIMESTAMP
+#   - INSTALLATION
     - $PYTHONPATH/pip install -r $SOURCEPATH/requirements.txt
     - $PYTHONPATH/python $SOURCEPATH/manage.py migrate
     - /bin/rm -Rf $DEPLOYPATH/static
     - $PYTHONPATH/python $SOURCEPATH/manage.py collectstatic
     - /bin/mv -v $SOURCEPATH/static_files/ $DEPLOYPATH/static
-    - /bin/cp -ar $SOURCEPATH/media/ $DEPLOYPATH
+#    - /bin/cp -ar $SOURCEPATH/media/ $DEPLOYPATH
     - /bin/selectorctl --interpreter ruby --user cuprumbe --domain cuprumberry.by --restart-webapp cuprumberry

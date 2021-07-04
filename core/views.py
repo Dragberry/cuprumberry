@@ -6,12 +6,13 @@ from django.db import transaction
 from django.db.models import Case, When, Q
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseNotFound
 from django.shortcuts import get_object_or_404
-from django.template import loader, RequestContext
+from django.template import loader
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
 
+from .email import send_html_mail
 from .models import Order, OrderItem, Product, Category, BlogPost, QuickReferenceCard
 
 
@@ -236,7 +237,9 @@ def catalog_quick_order(request):
                     address=address,
                     comment=comment,
                 )
-                save_order(order, [OrderItem(product=product)])
+                items: [OrderItem] = [OrderItem(product=product)]
+                save_order(order, items)
+                send_order_email(order, items)
             except Product.DoesNotExist:
                 status = 404
                 fields['productId'] = gettext('Quick order error: no product')
@@ -254,6 +257,22 @@ def save_order(order: Order, items: [OrderItem]):
     for item in items:
         item.save()
     order.items.set(items)
+
+
+def send_order_email(order: Order, items: [OrderItem]):
+    send_html_mail(
+        subject=f'Заказ №{order.id}',
+        html_content=render_to_string(
+            template_name='email/order.html',
+            context={
+                'order': order,
+                'items': items
+            }
+        ),
+        recipient_list=[
+            'cuprumberry@gmail.com'
+        ]
+    )
 
 
 def information(request):
@@ -403,7 +422,9 @@ class Cart:
                     address=address,
                     comment=comment,
                 )
-                save_order(order, [OrderItem(product=p) for p in products])
+                items: [OrderItem] = [OrderItem(product=p) for p in products]
+                save_order(order, items)
+                send_order_email(order, items)
                 request.session['cart'] = []
                 request.session['cart_product_count'] = 0
                 request.session['cart_stage'] = CartStage.SUCCESS.value

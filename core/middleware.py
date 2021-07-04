@@ -45,5 +45,7 @@ class MainMenuMiddleware:
         request.app_name = 'CuprumBerry.by'
         request.app_email = 'cuprumberry@cuprumberry.by'
         request.app_mobile = '+375(29)114-47-50'
+        request.producer_fullname = 'Додь Кристина Витальевна'
+        request.producer_account = 'KB2597479'
         response = self.get_response(request)
         return response

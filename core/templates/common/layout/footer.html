@@ -1,3 +1,9 @@
 <footer class="footer bg-dark navbar-dark">
-    &copy; 2021 CuprumBerry
+    <p>
+        <a class="text-light text-decoration-none" href="{% url 'core:index' %}">
+            Ремесленная мастерская <strong>{{ request.app_name }}</strong>
+        </a>
+    </p>
+    <p>&copy; 2021 </p>
+    <p><strong>{{ request.producer_fullname }}</strong> (учетный номер плательщика: <strong>{{ request.producer_account }}</strong>)</p>
 </footer>

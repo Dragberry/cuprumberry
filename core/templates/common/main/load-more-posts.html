@@ -1,5 +1,9 @@
 {% for post in posts %}
-{% include "common/main/product-post.html" with post=post %}
+{% if request.user_agent.is_mobile %}
+    {% include "mobile/main/product-post.html" with post=post %}
+{% else %}
+    {% include "normal/main/product-post.html" with post=post %}
+{% endif %}
 {% endfor %}
 
 <div id="loadMorePostsBlock">

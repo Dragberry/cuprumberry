@@ -270,7 +270,8 @@ def send_order_email(order: Order, items: [OrderItem]):
             }
         ),
         recipient_list=[
-            'cuprumberry@gmail.com'
+            'cuprumberry@gmail.com',
+            'cuprumberry@cuprumberry.by'
         ]
     )
 

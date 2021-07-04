@@ -162,10 +162,19 @@ LOGGING = {
 
 # EMAIL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'cuprumberry@gmail.com'
+EMAIL_HOST = 'mail.cuprumberry.by'
+EMAIL_HOST_USER = 'cuprumberry@cuprumberry.by'
 with open(os.path.join(HOME_DIR, 'etc/email.txt'), 'r') as file:
     EMAIL_HOST_PASSWORD = file.read().replace('\n', '')
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'CuprumBerry.by'
+EMAIL_PORT = 25
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+#
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'mail.cuprumberry.by'
+# EMAIL_HOST_USER = 'cuprumberry@cuprumberry.by'
+# with open(os.path.join(HOME_DIR, 'etc/email.txt'), 'r') as file:
+#     EMAIL_HOST_PASSWORD = file.read().replace('\n', '')
+# EMAIL_PORT = 25
+# EMAIL_USE_TLS = False
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

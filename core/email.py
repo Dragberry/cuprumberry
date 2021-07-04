@@ -1,7 +1,10 @@
+import logging
 import threading
 
 from django.core.mail import send_mail
 from django.utils.html import strip_tags
+
+logger = logging.getLogger('django')
 
 
 class EmailThread(threading.Thread):
@@ -21,7 +24,8 @@ class EmailThread(threading.Thread):
                 recipient_list=self.recipient_list
             )
         except Exception as e:
-            print(f'An error has occurred while sending email: {str(e)}')
+            print(e)
+            logger.exception(f'An error has occurred while sending email: {str(e)}')
 
 
 def send_html_mail(subject, html_content, recipient_list):

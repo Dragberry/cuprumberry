@@ -20,7 +20,7 @@ class EmailThread(threading.Thread):
                 subject=self.subject,
                 message=strip_tags(self.html_content),
                 html_message=self.html_content,
-                from_email='cuprumberry@gmail.com',
+                from_email='cuprumberry@cuprumberry.by',
                 recipient_list=self.recipient_list
             )
         except Exception as e:

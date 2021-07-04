@@ -4,7 +4,7 @@
 </head>
 <body>
     <h1>Заказ № {{ order.id }}</h1>
-    <table>
+    <table border="1">
         <tr>
             <td>Имя</td>
             <td>{{ order.name|default_if_none:"-" }}</td>
@@ -31,21 +31,25 @@
         </tr>
     </table>
     <h2>Детали заказа</h2>
-    <table>
+    <table border="1">
         <tr>
             <th>#</th>
             <th>Код продукта</th>
-            <th>Назавание</th>
+            <th>Название</th>
             <th>Цена</th>
             <th>Актуальная цена</th>
         </tr>
         {% for item in items %}
         <tr>
-            <td>#</td>
+            <td>{{ forloop.counter}}</td>
             <td>{{ item.product.id }}</td>
             <td>{{ item.product.name }}</td>
             <td>{{ item.product.price }} BYN</td>
+            {% if item.product.actual_price %}
             <td>{{ item.product.actual_price }} BYN</td>
+            {% else %}
+            <td>-</td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>

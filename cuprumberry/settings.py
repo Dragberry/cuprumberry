@@ -14,13 +14,15 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# HOME_DIR = '/Users/maksimdrahun'
+HOME_DIR = '/home/cuprumbe'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '18zl%jrf6sxe@%es@^d#-cdrzu_9@0vgon1f1ynpkfq77g%w8w'
+with open(os.path.join(HOME_DIR, 'etc/secret.txt'), 'r') as file:
+    SECRET_KEY = file.read().replace('\n', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -88,7 +90,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': '~/etc/mysql/my.cnf',
+            'read_default_file': os.path.join(HOME_DIR, 'etc/mysql/my.cnf'),
         },
     }
 }
@@ -131,10 +133,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/cuprumbe/public_html/static'
+STATIC_ROOT = os.path.join(HOME_DIR, 'public_html/static')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/cuprumbe/public_html/media'
+MEDIA_ROOT = os.path.join(HOME_DIR, 'public_html/media')
 
 LOGGING = {
     'version': 1,

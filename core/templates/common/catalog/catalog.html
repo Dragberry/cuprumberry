@@ -22,7 +22,7 @@
 
 {% block og_url %}{% if current_category.url %}{% buildfullurl current_category.url %}{% else %}{% fullurl 'core:index' %}{% endif %}{% endblock %}
 
-{% block og_image %}{% if product.main_image %}{% buildfullurl product.main_image.preview.url %}{% else %}{% fullstatic 'images/cuprumberry.jpeg' %}{% endif %}{% endblock %}
+{% block og_image %}{% if current_category.image %}{% buildfullurl current_category.image.preview.url %}{% else %}{% fullstatic 'images/cuprumberry.jpeg' %}{% endif %}{% endblock %}
 
 {% block content %}
 

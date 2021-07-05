@@ -16,6 +16,14 @@
     {% endblock %}
 {% endif %}
 
+{% block og_title %}{% if current_category.page_title %}{{ current_category.page_title }}{% else %}{{ current_category.name }}{% endif %}{% endblock %}
+
+{% block og_description %}{% if current_category.page_description %}{{ current_category.page_description }}{% else %}{% endif %}{% endblock %}
+
+{% block og_url %}{% if current_category.url %}{% buildfullurl current_category.url %}{% else %}{% fullurl 'core:index' %}{% endif %}{% endblock %}
+
+{% block og_image %}{% if product.main_image %}{% buildfullurl product.main_image.preview.url %}{% else %}{% fullstatic 'images/cuprumberry.jpeg' %}{% endif %}{% endblock %}
+
 {% block content %}
 
 <div class="row">

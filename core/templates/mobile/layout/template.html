@@ -2,6 +2,7 @@
 <html lang="en">
 {% load static %}
 {% load i18n %}
+{% load fullurl %}
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZC66ZXH8D"></script>
@@ -21,9 +22,16 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/socials.css' %}">
-    <title>{% block title %} Title {% endblock %}</title>
-    <meta name="description" content="{% block meta_description %} meta description {% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %} meta keywords {% endblock %}">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="robots" content="{% block meta_robots %}noindex, nofollow, nosnippet{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    {% block canonical %}{% endblock %}
+    <meta property="og:title" content="{% block og_title %}{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}{% endblock %}" />
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
+    <meta property="og:url" content="{% block og_url %}{% fullurl 'core:index' %}{% endblock %}" />
+    <meta property="og:image" content="{% block og_image %}{% fullstatic 'images/cuprumberry.jpeg' %}{% endblock %}" />
 </head>
 <body>
 

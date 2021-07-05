@@ -4,15 +4,23 @@
 
 {% block title %}{% if product.page_title %}{{ product.page_title }}{% else %}{{ product.name }} | {{ request.app_name }}{% endif %}{% endblock %}
 
-{% block meta_description  %}{{ product.page_description }}{% endblock %}
+{% block meta_description  %}{% if product.page_description %}{{ product.page_description }}{% else %}{{ product.short_description}}{% endif %}{% endblock %}
 
-{% block meta_keywords %}{{ product.page_keywords }}{% endblock %}
+{% block meta_keywords %}{% if product.page_keywords %}{{ product.page_keywords }}{% endif %}{% endblock %}
 
 {% block canonical %}
     {% if request.path != product.url %}
         <link rel="canonical" href="{% buildfullurl product.url %}" />
     {% endif %}
 {% endblock %}
+
+{% block og_title %}{% if product.page_title %}{{ product.page_title }}{% else %}{{ product.name }}{% endif %}{% endblock %}
+
+{% block og_description %}{% if product.page_description %}{{ product.page_description }}{% else %}{{ product.short_description }}{% endif %}{% endblock %}
+
+{% block og_url %}{% if product.url %}{% buildfullurl product.url %}{% else %}{% fullurl 'core:index' %}{% endif %}{% endblock %}
+
+{% block og_image %}{% if current_category.image %}{% buildfullurl current_category.image.preview.url %}{% else %}{% fullstatic 'images/cuprumberry.jpeg' %}{% endif %}{% endblock %}
 
 {% block content %}
 

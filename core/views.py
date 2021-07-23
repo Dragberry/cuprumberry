@@ -12,6 +12,7 @@ from django.urls import reverse
 from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
 
+from cuprumberry.settings import YANDEX_ID
 from .email import send_html_mail
 from .models import Order, OrderItem, Product, Category, BlogPost, QuickReferenceCard
 
@@ -447,3 +448,10 @@ class Cart:
 #
 # def error_500(request, exception):
 #     return 'common/errors/error-500.html'
+
+def yandex(request):
+    template = loader.get_template('yandex.html')
+    context = {
+        'yandex_id': YANDEX_ID,
+    }
+    return HttpResponse(template.render(context, request))

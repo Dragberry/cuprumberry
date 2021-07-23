@@ -178,3 +178,6 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # EMAIL_PORT = 25
 # EMAIL_USE_TLS = False
 # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+with open(os.path.join(HOME_DIR, 'etc/yandex_id.txt'), 'r') as file:
+    YANDEX_ID = file.read().replace('\n', '')

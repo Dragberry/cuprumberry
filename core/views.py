@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.utils.translation import gettext
 from django.views.generic import ListView, DetailView
 
-from cuprumberry.settings import YANDEX_ID
+from cuprumberry.settings import CONFIG
 from .email import send_html_mail
 from .models import Order, OrderItem, Product, Category, BlogPost, QuickReferenceCard
 
@@ -452,6 +452,6 @@ class Cart:
 def yandex(request):
     template = loader.get_template('yandex.html')
     context = {
-        'yandex_id': YANDEX_ID,
+        'yandex_id': CONFIG.get('seo', 'seo.yandex.id'),
     }
     return HttpResponse(template.render(context, request))

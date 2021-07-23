@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import configparser
 import os
 from pathlib import Path
 
@@ -20,9 +21,11 @@ HOME_DIR = '/home/cuprumbe'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
+CONFIG = configparser.ConfigParser()
+CONFIG.read(os.path.join(HOME_DIR, 'etc/cuprumberry.properties'))
+
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(os.path.join(HOME_DIR, 'etc/secret.txt'), 'r') as file:
-    SECRET_KEY = file.read().replace('\n', '')
+SECRET_KEY = CONFIG.get('main', 'main.secret.key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -162,22 +165,9 @@ LOGGING = {
 
 # EMAIL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.cuprumberry.by'
-EMAIL_HOST_USER = 'cuprumberry@cuprumberry.by'
-with open(os.path.join(HOME_DIR, 'etc/email.txt'), 'r') as file:
-    EMAIL_HOST_PASSWORD = file.read().replace('\n', '')
-EMAIL_PORT = 25
-EMAIL_USE_TLS = False
+EMAIL_HOST = CONFIG.get('email', 'email.host')
+EMAIL_PORT = CONFIG.getint('email', 'email.port')
+EMAIL_USE_TLS = CONFIG.getboolean('email', 'email.use.tls')
+EMAIL_HOST_USER = CONFIG.get('email', 'email.email')
+EMAIL_HOST_PASSWORD = CONFIG.get('email', 'email.password')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-#
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'mail.cuprumberry.by'
-# EMAIL_HOST_USER = 'cuprumberry@cuprumberry.by'
-# with open(os.path.join(HOME_DIR, 'etc/email.txt'), 'r') as file:
-#     EMAIL_HOST_PASSWORD = file.read().replace('\n', '')
-# EMAIL_PORT = 25
-# EMAIL_USE_TLS = False
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-with open(os.path.join(HOME_DIR, 'etc/yandex_id.txt'), 'r') as file:
-    YANDEX_ID = file.read().replace('\n', '')

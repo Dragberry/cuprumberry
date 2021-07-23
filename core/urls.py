@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.urls import path
 from django.views.generic import TemplateView
 
-from cuprumberry.settings import YANDEX_ID
+from cuprumberry.settings import CONFIG
 from . import views
 from .views import CatalogView, ProductView, Cart
 
@@ -11,7 +11,7 @@ app_name: str = 'core'
 urlpatterns = [
     path('', views.index, name='index'),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name='robots.txt'),
-    path(f'yandex_{YANDEX_ID}.html', views.yandex, name='yandex'),
+    path(f'yandex_{CONFIG.get("seo", "seo.yandex.id")}.html', views.yandex, name='yandex'),
     path('informaciya', views.information, name='information'),
     url('^load-more-posts/(?P<offset>\\d+)$', views.load_more_posts, name='load_more_posts'),
     url('^catalog/quick-order$', views.catalog_quick_order, name='quick_order'),

@@ -455,3 +455,11 @@ def yandex(request):
         'yandex_id': CONFIG.get('seo', 'seo.yandex.id'),
     }
     return HttpResponse(template.render(context, request))
+
+
+def google(request):
+    template = loader.get_template('google.html')
+    context = {
+        'google_id': CONFIG.get('seo', 'seo.google.id'),
+    }
+    return HttpResponse(template.render(context, request))

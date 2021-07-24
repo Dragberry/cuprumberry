@@ -12,6 +12,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain"), name='robots.txt'),
     path(f'yandex_{CONFIG.get("seo", "seo.yandex.id")}.html', views.yandex, name='yandex'),
+    path(f'google{CONFIG.get("seo", "seo.google.id")}.html', views.google, name='google'),
     path('informaciya', views.information, name='information'),
     url('^load-more-posts/(?P<offset>\\d+)$', views.load_more_posts, name='load_more_posts'),
     url('^catalog/quick-order$', views.catalog_quick_order, name='quick_order'),
